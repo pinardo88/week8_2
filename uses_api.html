@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>JSON Pt3</title>
+	<meta charset="utf-8"/>
+	<script>
+		function getRandom(word) {
+			
+            url = `https://uselessfacts.jsph.pl/api/v2/facts/${word}`;
+
+            fetch(url)
+                .then(res => res.json())
+                .then (data => {
+					console.log(data);
+                    document.getElementById("randomText").innerHTML = data.text;	
+	            })
+	        .catch (error => console.log(error))
+		}
+	</script>
+</head>
+<body>
+
+	<h1>Click to get a useless fact:</h1>
+	<button onclick = "getRandom('random')">Get Random Fact</button>
+	<button onclick = "getRandom('today')">Get Random Fact about Today</button>
+	<br><br>
+	<div id="randomText"></div>
+</body>
+</html>
